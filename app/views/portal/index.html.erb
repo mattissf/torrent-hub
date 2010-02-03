@@ -1,16 +1,5 @@
 <script type="text/javascript">
   Ext.onReady(function() {
-    var proxy = new Ext.data.HttpProxy({
-      url: 'torrents'
-    });
-
-    var store = new Ext.data.Store({
-      restful: true,
-      proxy: proxy,
-      reader: new Ext.data.JsonReader(),
-      autoLoad: true
-    });
-
     new Ext.Viewport({
       layout: 'border',
       items: [{
@@ -26,7 +15,7 @@
           width: 200
       }, {
           region: 'south',
-          title: 'Title for Panel',
+          title: 'Details',
           collapsible: true,
           html: 'Information goes here',
           split: true,
@@ -41,25 +30,8 @@
           xtype: 'panel',
       }, {
           region: 'center',
-          items: new Ext.Panel({
-            layout: 'fit',
-            items: [
-              new Ext.grid.GridPanel({
-                loadMask: {
-                  store: store,
-                  msg: "Loading..."
-                },
-                store: store,
-                autoExpandColumn: "0",
-                columns: [{ header: 'Name'}],
-                autoScroll: true,
-                height: 300,
-                viewConfig: {
-                  forceFit: true
-                }
-              })
-            ]
-          })
+          layout: 'fit',
+          items: new TH.grid.TorrentList()
       }]
     });    
   });

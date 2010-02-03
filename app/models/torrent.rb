@@ -6,7 +6,6 @@ class Torrent
     username = 'mattis'
     password = 'matt1s'
 
-
     url = URI.parse('http://localhost:6666/');
 
     @client = HTTPClient.new
@@ -38,7 +37,13 @@ class Torrent
     result = post_to_rpc({
       'method'    => 'torrent-get', 
       'arguments' => {
-        'fields'  => ['name', 'id']
+        'fields'  => [
+          'name', 
+          'torrentFile', 
+          'id', 
+          'rateDownload',
+          'status'
+        ]
       }
     })
 
@@ -48,7 +53,11 @@ class Torrent
         'totalProperty' => 'results',
         'root' => 'rows',
         'fields' => [
-          {'name' => 'name'}
+          {'name' => 'name'},
+          {'name' => 'torrentFile'},
+          {'name' => 'id'},
+          {'name' => 'rateDownload'},
+          {'name' => 'status'}
         ]
       },
 
