@@ -1,0 +1,66 @@
+<script type="text/javascript">
+  Ext.onReady(function() {
+    var proxy = new Ext.data.HttpProxy({
+      url: 'torrents'
+    });
+
+    var store = new Ext.data.Store({
+      restful: true,
+      proxy: proxy,
+      reader: new Ext.data.JsonReader(),
+      autoLoad: true
+    });
+
+    new Ext.Viewport({
+      layout: 'border',
+      items: [{
+          region: 'north',
+          html: '<h1 class="x-panel-header">Page Title</h1>',
+          autoHeight: true,
+          border: false,
+          margins: '0 0 5 0'
+      }, {
+          region: 'west',
+          collapsible: true,
+          title: 'Navigation',
+          width: 200
+      }, {
+          region: 'south',
+          title: 'Title for Panel',
+          collapsible: true,
+          html: 'Information goes here',
+          split: true,
+          height: 100,
+          minHeight: 100
+      }, {
+          region: 'east',
+          title: 'Title for the Grid Panel',
+          collapsible: true,
+          split: true,
+          width: 200,
+          xtype: 'panel',
+      }, {
+          region: 'center',
+          items: new Ext.Panel({
+            layout: 'fit',
+            items: [
+              new Ext.grid.GridPanel({
+                loadMask: {
+                  store: store,
+                  msg: "Loading..."
+                },
+                store: store,
+                autoExpandColumn: "0",
+                columns: [{ header: 'Name'}],
+                autoScroll: true,
+                height: 300,
+                viewConfig: {
+                  forceFit: true
+                }
+              })
+            ]
+          })
+      }]
+    });    
+  });
+</script>
