@@ -1,2 +1,4 @@
 *.sw?
 *.log
+rerun.txt
+db/*.sqlite3
