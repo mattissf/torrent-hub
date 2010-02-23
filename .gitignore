@@ -1,4 +1,7 @@
 *.sw?
 *.log
-rerun.txt
-db/*.sqlite3
+*.sqlite3
+/db/schema.rb
+/rerun.txt
+/tmp
+.loadpath
