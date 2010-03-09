@@ -33,3 +33,5 @@ config.gem "webrat", :lib => false
 config.gem "cucumber", :lib => false
 config.gem "cucumber-rails", :lib => false
 config.gem "database_cleaner", :lib => false
+config.gem "machinist", :lib => false
+config.gem "faker", :lib => false

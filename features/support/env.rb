@@ -3,7 +3,6 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file 
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-
 ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
@@ -45,10 +44,13 @@ ActionController::Base.allow_rescue = false
 # after each scenario, which can lead to hard-to-debug failures in 
 # subsequent scenarios. If you do this, we recommend you create a Before
 # block that will explicitly put your database in a known state.
-Cucumber::Rails::World.use_transactional_fixtures = true
+Cucumber::Rails::World.use_transactional_fixtures = false
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
 require 'database_cleaner'
+require 'database_cleaner/cucumber'
 DatabaseCleaner.strategy = :truncation
 
+# Adding blueprints 
+require File.join(RAILS_ROOT, 'spec', 'blueprint')
