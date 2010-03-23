@@ -3,6 +3,7 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file 
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
+
 ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
@@ -12,14 +13,16 @@ require 'cucumber/rails/world'
 require 'cucumber/rails/active_record'
 require 'cucumber/web/tableish'
 
-#require 'webrat'
-#require 'webrat/core/matchers'
-#
-#Webrat.configure do |config|
-#  config.mode = :selenium
-#  config.selenium_browser_key = "*chrome"  
-#  config.open_error_files = false # Set to true if you want error pages to pop up in the browser
-#end
+require 'capybara/rails'
+require 'capybara/cucumber'
+require 'capybara/session'
+require 'cucumber/rails/capybara_javascript_emulation' # Lets you click links with onclick javascript handlers without using @culerity or @javascript
+# Capybara defaults to XPath selectors rather than Webrat's default of CSS3. In
+# order to ease the transition to Capybara we set the default here. If you'd
+# prefer to use XPath just remove this line and adjust any selectors in your
+# steps to use the XPath syntax.
+Capybara.default_selector = :css
+Capybara.default_driver = :selenium
 
 
 # If you set this to false, any error raised from within your app will bubble 
@@ -49,9 +52,13 @@ Cucumber::Rails::World.use_transactional_fixtures = false
 
 # How to clean your database when transactions are turned off. See
 # http://github.com/bmabey/database_cleaner for more info.
-require 'database_cleaner'
-require 'database_cleaner/cucumber'
-DatabaseCleaner.strategy = :truncation
+if defined?(ActiveRecord::Base)
+  begin
+    require 'database_cleaner'
+    DatabaseCleaner.strategy = :truncation
+  rescue LoadError => ignore_if_database_cleaner_not_present
+  end
+end
 
 # Adding blueprints 
 require File.join(RAILS_ROOT, 'spec', 'blueprint')
