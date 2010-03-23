@@ -1,7 +1,19 @@
-<head>
-	<title>Torrent Portal</title>
-  <%=stylesheet_link_tag '/javascripts/ext/resources/css/ext-all' %>
-  <%=javascript_include_tag 'ext/adapter/ext/ext-base-debug-w-comments', 'ext/ext-all-debug', 'grid/TorrentList' %>
-</head>
-
-<%= yield %>
+<html>
+    <head>
+        <title>Torrent Portal</title>
+        <%=stylesheet_link_tag(
+          '/javascripts/ext/resources/css/ext-all',
+          '/javascripts/ext/examples/ux/fileuploadfield/css/fileuploadfield.css'
+        )%>
+        <%=javascript_include_tag( 
+          'ext/adapter/ext/ext-base-debug-w-comments', 
+          'ext/ext-all-debug', 
+          'ext/examples/ux/fileuploadfield/FileUploadField.js',
+          'grid/TorrentList' , 
+          'window/AddTorrent'
+        )%>
+    </head>
+    <body>
+        <%= yield %>
+    </body>
+</html>

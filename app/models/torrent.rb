@@ -5,24 +5,21 @@ class Torrent
   def initialize 
     username = 'mattis'
     password = 'matt1s'
+    
+    @transmission_host = "http://localhost:56700"; 
 
-    url = URI.parse('http://localhost:6666/');
+    url = URI.parse(@transmission_host);
 
     @client = HTTPClient.new
     @client.set_auth(url, username, password)
-
-    set_transmission_session_id
   end
 
   def self.all 
     Torrent.new.get_active_torrents
   end
 
-  def set_transmission_session_id
-  end
-
   def post_to_rpc(data)
-    rpc_url = 'http://localhost:6666/transmission/rpc'
+    rpc_url = @transmission_host + '/transmission/rpc'
     session_id_header_key = 'X-Transmission-Session-Id'
  
     if @sessionId.nil? then

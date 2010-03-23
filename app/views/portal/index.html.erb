@@ -2,37 +2,20 @@
   Ext.onReady(function() {
     new Ext.Viewport({
       layout: 'border',
-      items: [{
+        items: [{
           region: 'north',
-          html: '<h1 class="x-panel-header">Page Title Kine er Sjef</h1>',
-          autoHeight: true,
-          border: false,
-          margins: '0 0 5 0'
-      }, {
-          region: 'west',
-          collapsible: true,
-          title: 'Navigation',
-          width: 200
-      }, {
-          region: 'south',
-          title: 'Details',
-          collapsible: true,
-          html: 'Information goes here',
-          split: true,
-          height: 100,
-          minHeight: 100
-      }, {
-          region: 'east',
-          title: 'Title for the Grid Panel',
-          collapsible: true,
-          split: true,
-          width: 200,
-          xtype: 'panel',
-      }, {
+					buttons: [{
+	          text: "Add Torrent",
+	          handler: function() {
+	            new TH.window.AddTorrent().show();
+	          }						
+					}],
+        },{
           region: 'center',
           layout: 'fit',
           items: new TH.grid.TorrentList()
-      }]
+				}
+			]
     });    
   });
 </script>

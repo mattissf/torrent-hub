@@ -261,3 +261,7 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+def attach_file(field_locator, path, content_type = nil)
+  fill_in(field_locator, :with => path)
+end

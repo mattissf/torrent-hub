@@ -12,13 +12,14 @@ require 'cucumber/rails/world'
 require 'cucumber/rails/active_record'
 require 'cucumber/web/tableish'
 
-require 'webrat'
-require 'webrat/core/matchers'
-
-Webrat.configure do |config|
-  config.mode = :rails
-  config.open_error_files = false # Set to true if you want error pages to pop up in the browser
-end
+#require 'webrat'
+#require 'webrat/core/matchers'
+#
+#Webrat.configure do |config|
+#  config.mode = :selenium
+#  config.selenium_browser_key = "*chrome"  
+#  config.open_error_files = false # Set to true if you want error pages to pop up in the browser
+#end
 
 
 # If you set this to false, any error raised from within your app will bubble 
