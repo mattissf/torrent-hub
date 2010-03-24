@@ -1,4 +1,8 @@
 When /^(?:|I )upload a torrent file$/ do
-  When %[I attach the file "features/support/example.torrent" to "torrent_file"]
+  locator = 'upload_torrent-file'
+  file_path = Rails.root.join('spec', 'support','example.torrent')
+  
+  attach_file(locator, file_path)
+  
   When %[I press "Ok"]
 end
