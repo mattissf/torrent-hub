@@ -3,15 +3,15 @@ class Torrent
   require 'httpclient'
 
   def initialize 
-    username = 'mattis'
-    password = 'matt1s'
-    
-    @transmission_host = "http://localhost:56700"; 
-
-    url = URI.parse(@transmission_host);
-
-    @client = HTTPClient.new
-    @client.set_auth(url, username, password)
+#    username = 'mattis'
+#    password = 'matt1s'
+#    
+#    @transmission_host = "http://localhost:56700"; 
+#
+#    url = URI.parse(@transmission_host);
+#
+#    @client = HTTPClient.new
+#    @client.set_auth(url, username, password)
   end
 
   def self.all 
