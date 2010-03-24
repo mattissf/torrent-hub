@@ -1,4 +1,4 @@
-class Torrent
+class TorrentAdapter
   require 'uri'
   require 'httpclient'
 
