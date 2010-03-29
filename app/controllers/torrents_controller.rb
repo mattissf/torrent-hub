@@ -35,18 +35,9 @@ class TorrentsController < ApplicationController
   # POST /torrents
   # POST /torrents.xml
   def create
-    #@torrent = Torrent.new(params[:torrent])
-
-    #respond_to do |format|
-    #  if @torrent.save
-    #    flash[:notice] = 'Torrent was successfully created.'
-    #    format.html { redirect_to(@torrent) }
-    #    format.xml  { render :xml => @torrent, :status => :created, :location => @torrent }
-    #  else
-    #    format.html { render :action => "new" }
-    #    format.xml  { render :xml => @torrent.errors, :status => :unprocessable_entity }
-    #  end
-    #end
+    torrent = Torrent.new
+    torrent.add_torrent(params[:torrent_file])
+    flash[:notice] = 'Torrent was successfully created.'
   end
 
   # PUT /torrents/1

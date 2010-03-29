@@ -1,7 +1,15 @@
 require 'transmission-connector'
 
 class Torrent < ActiveRecord::Base
-  def self.all
+  def add_torrent_from_string(torrent_file_content)
+    Torrent.query.add_torrent_from_string torrent_file_content
+  end
+  
+  def add_torrent(torrent_file)
+    Torrent.query.add_torrent_from_file torrent_file
+  end
+  
+  def self.query
     connection = TransmissionConnector::Connection.new({
       :username => 'test',
       :password => 'test',
@@ -9,9 +17,11 @@ class Torrent < ActiveRecord::Base
       :port => 56700
     })
       
-    query = TransmissionConnector::Query.new(connection)
-    
-    torrents = query.get_list_of_torrents
+    TransmissionConnector::Query.new(connection)
+  end
+  
+  def self.all    
+    torrents = Torrent.query.get_list_of_torrents
     
     {
       'metaData' => {

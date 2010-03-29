@@ -12,6 +12,9 @@
           'grid/TorrentList' , 
           'window/AddTorrent'
         )%>
+				<script type="text/javascript">
+	        Ext.Ajax.extraParams = { authenticity_token: "<%= form_authenticity_token %>" };
+				</script>
     </head>
     <body>
         <%= yield %>
