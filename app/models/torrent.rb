@@ -11,10 +11,10 @@ class Torrent < ActiveRecord::Base
   
   def self.query
     connection = TransmissionConnector::Connection.new({
-      :username => 'test',
-      :password => 'test',
-      :host => '127.0.0.1',
-      :port => 56700
+      :username => ENV['TRANSMISSION_USERNAME'],
+      :password => ENV['TRANSMISSION_PASSWORD'],
+      :host     => ENV['TRANSMISSION_HOST'],
+      :port     => ENV['TRANSMISSION_PORT']
     })
       
     TransmissionConnector::Query.new(connection)

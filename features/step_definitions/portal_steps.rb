@@ -6,3 +6,7 @@ When /^(?:|I )upload a torrent file$/ do
   
   When %[I press "Ok"]
 end
+
+Then /^I should see "([^\"]*)" in the list of torrents$/ do |torrent_name|
+  pending
+end

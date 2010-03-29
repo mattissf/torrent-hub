@@ -27,3 +27,7 @@ config.gem 'capybara',         :lib => false, :version => '>=0.3.0' unless File.
 config.gem 'rspec',            :lib => false, :version => '>=1.3.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
 config.gem 'rspec-rails',      :lib => false, :version => '>=1.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
 
+ENV['TRANSMISSION_USERNAME'] = 'test'
+ENV['TRANSMISSION_USERNAME'] = 'test'
+ENV['TRANSMISSION_PORT']     = "13337"
+ENV['TRANSMISSION_HOST']     = '127.0.0.1'
