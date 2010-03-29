@@ -18,11 +18,10 @@ TH.grid.TorrentList = Ext.extend(Ext.grid.GridPanel, {
 	autoExpandColumn: "0",
 	
   columns: [
-		{ header: 'Name' },
-		{ header: 'File' },
-		{ header: 'ID' },
-		{ header: 'Down Speed' },
-		{ header: 'Status' }
+		{ header: 'Name',       dataIndex: 'name'},
+		{ header: 'Down Speed', dataIndex: 'rate_download' },
+		{ header: 'Up Speed',   dataIndex: 'rate_upload'},
+		{ header: 'Status',     dataIndex: 'status' }
   ],
 	
 	viewConfig: {

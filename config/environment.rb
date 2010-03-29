@@ -22,12 +22,8 @@ Rails::Initializer.run do |config|
   config.gem "httpclient"
   config.gem "json"
   config.gem "sqlite3-ruby", :lib => "sqlite3"
-  config.gem "database_cleaner"
-  config.gem "capybara"
-  config.gem "rspec-rails", :lib => "spec/rails"
-  config.gem "cucumber-rails", :lib=>"cucumber"
-  config.gem "machinist"
   config.gem "mongrel"
+  config.gem "transmission-connector"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

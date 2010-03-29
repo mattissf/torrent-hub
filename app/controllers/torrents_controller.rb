@@ -2,7 +2,7 @@ class TorrentsController < ApplicationController
   # GET /torrents
   # GET /torrents.xml
   def index
-    #render :json => Torrent.all
+    render :json => Torrent.all
   end
 
   # GET /torrents/1
